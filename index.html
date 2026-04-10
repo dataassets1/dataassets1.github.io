@@ -211,6 +211,37 @@
     a { color: var(--accent2); text-decoration: none; transition: color .2s; }
     a:hover { color: var(--accent); }
 
+    /* ── TITANIUM TEXTURE ── */
+    .titanium {
+      position: relative; overflow: hidden;
+      background:
+        linear-gradient(135deg, #ebedf0 0%, #f4f5f7 25%, #e8eaed 50%, #f2f3f5 75%, #eceef1 100%);
+    }
+    .titanium::before {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          transparent,
+          transparent 3px,
+          rgba(180,185,195,.06) 3px,
+          rgba(180,185,195,.06) 4px
+        ),
+        repeating-linear-gradient(
+          0deg,
+          transparent,
+          transparent 40px,
+          rgba(160,168,180,.04) 40px,
+          rgba(160,168,180,.04) 41px
+        );
+    }
+    .titanium::after {
+      content: ''; position: absolute; inset: 0; pointer-events: none; z-index: 0;
+      background:
+        linear-gradient(160deg, rgba(255,255,255,.4) 0%, transparent 40%, transparent 60%, rgba(255,255,255,.2) 100%);
+    }
+    .titanium > * { position: relative; z-index: 1; }
+
     .wrapper { position: relative; max-width: 880px; margin: 0 auto; padding: 0 32px; }
 
     /* ── NAV ── */
@@ -309,16 +340,12 @@
     /* ── STATS ── */
     .stats {
       display: grid; grid-template-columns: repeat(4, 1fr);
-      gap: 0; padding: 40px 0 40px;
+      gap: 16px; padding: 40px 0 40px;
       border-bottom: 1px solid var(--border);
     }
     .stat {
-      text-align: center; padding: 20px 12px;
-      position: relative;
-    }
-    .stat:not(:last-child)::after {
-      content: ''; position: absolute; right: 0; top: 20%; height: 60%;
-      width: 1px; background: var(--border);
+      text-align: center; padding: 24px 12px;
+      border-radius: 8px; border: 1px solid var(--border);
     }
     .stat .num {
       font-family: 'DM Serif Display', serif;
@@ -350,19 +377,18 @@
     .tag {
       padding: 10px 22px; border-radius: 4px;
       font-size: .82rem; font-weight: 500; letter-spacing: .3px;
-      background: var(--surface); border: 1px solid var(--border);
+      border: 1px solid var(--border);
       color: var(--text-dim); transition: all .2s;
     }
     .tag.highlight {
       border-color: rgba(42,181,160,.3); color: var(--accent2);
-      background: rgba(42,181,160,.04);
     }
 
     /* ── SPEAKING & AWARDS ── */
     .highlight-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
     .highlight-card {
       padding: 28px 28px; border-radius: 8px;
-      background: var(--surface); border: 1px solid var(--border);
+      border: 1px solid var(--border);
       transition: all .3s;
     }
     a.highlight-card { display: block; }
@@ -388,14 +414,16 @@
     .tag-judge { background: rgba(26,154,138,.08); color: var(--accent2); }
 
     /* ── EXPERIENCE ── */
-    .exp-grid { display: flex; flex-direction: column; gap: 0; }
+    .exp-grid { display: flex; flex-direction: column; gap: 16px; }
     .exp-card {
-      padding: 28px 0;
-      border-bottom: 1px solid var(--border-light);
-      transition: background .3s;
+      padding: 24px 28px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all .3s;
     }
-    .exp-card:first-child { padding-top: 0; }
-    .exp-card:last-child { border-bottom: none; }
+    .exp-card:hover {
+      border-color: rgba(42,181,160,.3);
+      box-shadow: 0 4px 20px rgba(42,181,160,.06);
+    }
     .exp-header {
       display: flex; justify-content: space-between; align-items: baseline;
       flex-wrap: wrap; gap: 8px; margin-bottom: 8px;
@@ -421,14 +449,13 @@
     }
 
     /* ── PUBLICATIONS ── */
-    .pub-list { display: flex; flex-direction: column; gap: 0; }
+    .pub-list { display: flex; flex-direction: column; gap: 12px; }
     .pub-item {
       display: flex; align-items: baseline; gap: 20px;
-      padding: 18px 0;
-      border-bottom: 1px solid var(--border-light);
-      transition: color .2s;
+      padding: 18px 20px; border-radius: 8px;
+      border: 1px solid var(--border);
+      transition: all .2s;
     }
-    .pub-item:last-child { border-bottom: none; }
     .pub-item:hover { color: var(--accent2); }
     .pub-year {
       font-size: .75rem; font-weight: 600;
@@ -516,22 +543,22 @@
 
   <!-- STATS -->
   <div class="stats">
-    <div class="stat"><div class="num">15+</div><div class="label">Years in Data</div></div>
-    <div class="stat"><div class="num">Top 100</div><div class="label">OnCon Data Professional</div></div>
-    <div class="stat"><div class="num">5x</div><div class="label">Conference Speaker</div></div>
-    <div class="stat"><div class="num">Top 1%</div><div class="label">ADPList Mentor</div></div>
+    <div class="stat titanium"><div class="num">15+</div><div class="label">Years in Data</div></div>
+    <div class="stat titanium"><div class="num">Top 100</div><div class="label">OnCon Data Professional</div></div>
+    <div class="stat titanium"><div class="num">5x</div><div class="label">Conference Speaker</div></div>
+    <div class="stat titanium"><div class="num">Top 1%</div><div class="label">ADPList Mentor</div></div>
   </div>
 
   <!-- EXPERTISE -->
   <section id="skills">
     <div class="section-label">Expertise</div>
     <div class="tags">
-      <span class="tag highlight">Microsoft Fabric</span>
-      <span class="tag highlight">Spark</span>
-      <span class="tag highlight">SQL</span>
-      <span class="tag">Databricks</span>
-      <span class="tag">AI</span>
-      <span class="tag">OHDSI</span>
+      <span class="tag highlight titanium">Microsoft Fabric</span>
+      <span class="tag highlight titanium">Spark</span>
+      <span class="tag highlight titanium">SQL</span>
+      <span class="tag titanium">Databricks</span>
+      <span class="tag titanium">AI</span>
+      <span class="tag titanium">OHDSI</span>
     </div>
   </section>
 
@@ -539,32 +566,32 @@
   <section id="speaking">
     <div class="section-label">Speaking &amp; Awards</div>
     <div class="highlight-grid">
-      <a class="highlight-card" href="https://fabriccon.com/" target="_blank">
+      <a class="highlight-card titanium" href="https://fabriccon.com/" target="_blank">
         <h3>FabCon 2026 &mdash; Atlanta</h3>
         <p>Speaker at the world's largest Microsoft Analytics conference.</p>
         <span class="tag-small tag-speaker">Speaker</span>
       </a>
-      <a class="highlight-card" href="https://sqlsaturday.com/" target="_blank">
+      <a class="highlight-card titanium" href="https://sqlsaturday.com/" target="_blank">
         <h3>Day of Data &mdash; 3x Speaker</h3>
         <p>Presented in San Diego, Atlanta, and Jacksonville (2024&ndash;2026).</p>
         <span class="tag-small tag-speaker">Speaker</span>
       </a>
-      <a class="highlight-card" href="https://www.onconferences.com/awards" target="_blank">
+      <a class="highlight-card titanium" href="https://www.onconferences.com/awards" target="_blank">
         <h3>Top 100 Data Professional</h3>
         <p>2026 OnCon Top 100 Data &amp; Analytics Professional Award.</p>
         <span class="tag-small tag-award">Award</span>
       </a>
-      <a class="highlight-card" href="https://adplist.org/certifications/277731" target="_blank">
+      <a class="highlight-card titanium" href="https://adplist.org/certifications/277731" target="_blank">
         <h3>Top 1% Mentor &mdash; ADPList</h3>
         <p>44 mentorship sessions with highly-rated feedback (2025).</p>
         <span class="tag-small tag-award">Award</span>
       </a>
-      <a class="highlight-card" href="https://www.digitalhealthhub.org/awards/2025/digital-health-awards" target="_blank">
+      <a class="highlight-card titanium" href="https://www.digitalhealthhub.org/awards/2025/digital-health-awards" target="_blank">
         <h3>Digital Health Awards &mdash; Judge</h3>
         <p>Evaluated 100+ applications at Las Vegas event, Oct 2025.</p>
         <span class="tag-small tag-judge">Judge</span>
       </a>
-      <div class="highlight-card">
+      <div class="highlight-card titanium">
         <h3>IT Universe Olympiad &mdash; Jury</h3>
         <p>Member of jury committee for international AI olympiad, May 2025.</p>
         <span class="tag-small tag-judge">Judge</span>
@@ -576,7 +603,7 @@
   <section id="experience">
     <div class="section-label">Experience</div>
     <div class="exp-grid">
-      <div class="exp-card">
+      <div class="exp-card titanium">
         <div class="exp-header">
           <div><span class="exp-role">Principal Consultant &amp; CEO</span> <span class="exp-company">&mdash; Data Assets LLC</span></div>
           <span class="exp-date">Feb 2026 &mdash; Present</span>
@@ -585,7 +612,7 @@
           <li>Driving measurable ROI on every engagement &mdash; from architecture strategy through production handoff</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="exp-card titanium">
         <div class="exp-header">
           <div><span class="exp-role">Senior Data Engineer</span> <span class="exp-company">&mdash; Life Line Screening</span></div>
           <span class="exp-date">Jul 2025 &mdash; Present</span>
@@ -595,7 +622,7 @@
           <li>Implementing best-in-class Data Analytics solutions using Microsoft Fabric</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="exp-card titanium">
         <div class="exp-header">
           <div><span class="exp-role">Senior Data Engineer</span> <span class="exp-company">&mdash; OmniData</span></div>
           <span class="exp-date">Apr 2023 &mdash; Apr 2025</span>
@@ -604,7 +631,7 @@
           <li>Shipped five commercial projects across Healthcare, Aviation, Logistics, and Manufacturing</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="exp-card titanium">
         <div class="exp-header">
           <div><span class="exp-role">Senior BI / DWH Engineer</span> <span class="exp-company">&mdash; Playtika</span></div>
           <span class="exp-date">Oct 2020 &mdash; Nov 2022</span>
@@ -613,7 +640,7 @@
           <li>Built the unified data platform behind 21 games and 27 marketing pipelines, hitting 99% accuracy and giving product teams the numbers they needed to move fast</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="exp-card titanium">
         <div class="exp-header">
           <div><span class="exp-role">Database Developer</span> <span class="exp-company">&mdash; DB Best Technologies</span></div>
           <span class="exp-date">May 2018 &mdash; Dec 2019</span>
@@ -622,7 +649,7 @@
           <li>Completed 3 complex projects in Data Analytics and Microsoft Azure for Healthcare &amp; Marketing domains</li>
         </ul>
       </div>
-      <div class="exp-card">
+      <div class="exp-card titanium">
         <div class="exp-header">
           <div><span class="exp-role">Senior BI Consultant</span> <span class="exp-company">&mdash; UBC Corp</span></div>
           <span class="exp-date">Jul 2009 &mdash; Aug 2014</span>
@@ -638,15 +665,15 @@
   <section id="publications">
     <div class="section-label">Publications</div>
     <div class="pub-list">
-      <a class="pub-item" href="https://dzone.com/articles/microsoft-fabric-api-automation-security-data-guide" target="_blank">
+      <a class="pub-item titanium" href="https://dzone.com/articles/microsoft-fabric-api-automation-security-data-guide" target="_blank">
         <span class="pub-year">2026</span>
         <span>Microsoft Fabric API Automation, Security &amp; Data Guide &mdash; DZone</span>
       </a>
-      <a class="pub-item" href="https://dzone.com/articles/developers-guide-local-llms-ollama" target="_blank">
+      <a class="pub-item titanium" href="https://dzone.com/articles/developers-guide-local-llms-ollama" target="_blank">
         <span class="pub-year">2026</span>
         <span>Developer's Guide to Local LLMs with Ollama &mdash; DZone</span>
       </a>
-      <a class="pub-item" href="https://www.dama-ukraine-kyiv.org/en/post/top-trends-in-big-data-in-2025-1" target="_blank">
+      <a class="pub-item titanium" href="https://www.dama-ukraine-kyiv.org/en/post/top-trends-in-big-data-in-2025-1" target="_blank">
         <span class="pub-year">2025</span>
         <span>Top Trends in Big Data in 2025 &mdash; DAMA Ukraine</span>
       </a>
@@ -657,19 +684,19 @@
   <section>
     <div class="section-label">Community &amp; Education</div>
     <div class="highlight-grid">
-      <a class="highlight-card" href="https://www.meetup.com/microsoft-fabric-and-data-engineering-group/" target="_blank">
+      <a class="highlight-card titanium" href="https://www.meetup.com/microsoft-fabric-and-data-engineering-group/" target="_blank">
         <h3>Local Data Community Leader</h3>
         <p>Leading the Data Platforms community &mdash; organizing events, curating speakers, and growing the local data ecosystem.</p>
       </a>
-      <div class="highlight-card">
+      <div class="highlight-card titanium">
         <h3>Education</h3>
         <p>M.S. &amp; B.S. in Chemistry &mdash; Taras Shevchenko National University of Kyiv. DAMA International member. OHDSI contributor.</p>
       </div>
-      <a class="highlight-card" href="https://orcid.org/0009-0008-8708-9437" target="_blank">
+      <a class="highlight-card titanium" href="https://orcid.org/0009-0008-8708-9437" target="_blank">
         <h3>ORCID Profile</h3>
         <p>Academic research identity and publication record &mdash; 0009-0008-8708-9437.</p>
       </a>
-      <a class="highlight-card" href="https://sessionize.com/4iurchenko" target="_blank">
+      <a class="highlight-card titanium" href="https://sessionize.com/4iurchenko" target="_blank">
         <h3>Sessionize Speaker Profile</h3>
         <p>Conference talk submissions, session history, and speaker bio.</p>
       </a>
